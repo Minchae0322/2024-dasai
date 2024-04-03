@@ -118,7 +118,8 @@ section {
   text-align: center;
   border: 1px solid rgba(255, 0, 0, 0);
   width: auto;
-  height: 800px;
+  height: 600px;
+  overflow-y: auto;
 }
 .goq {
   width: 200px;
@@ -152,7 +153,7 @@ section button {
   font-size: 20px;
   font-weight: 300;
   margin: auto;
-  margin-top: 300px;
+  margin-top: 200px;
 }
 .select {
   list-style: none;
@@ -183,11 +184,11 @@ section button {
 
 /* tab */
 .tabs > div {
-  display: none;
+  /* display: none;
   margin: 20px;
-  width: auto;
-  height: 700px;
-  overflow: hidden;
+  width: auto; */
+  height: 600px;
+  overflow-y: auto;
 }
 .tabs > div.active {
   display: block;
@@ -225,16 +226,22 @@ section button {
   margin-left: 25px;
   margin-top: 25px;
 }
+#tab_story{
+  display: flex;
+    flex-direction: column-reverse; /* 항목을 거꾸로 정렬 */
+    overflow-y: auto;
+    height: 500px; /* 적절한 높이 설정 */
+}
 
-/* 답안이 2개 + 이미지 */
+/* 답안이 2개 + 이미지
 #tab2, #tab3 {
   overflow: hidden;
   overflow-y: scroll;
 }
 #tab2 div, #tab3 div {
   overflow: hidden;
-}
-.da_short {
+} */
+/* .da_short {
   padding: 25px 40px;
   background-color: #fff;
   border-radius: 0 40px 40px 40px;
@@ -266,4 +273,4 @@ section button {
   float: left;
   margin-left: 25px;
   margin-top: 25px;
-}
+} */

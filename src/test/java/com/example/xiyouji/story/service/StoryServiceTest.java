@@ -51,8 +51,10 @@ class StoryServiceTest {
         Story mockStory = Story.builder()
                 .characters(Characters.NONE)
                 .language(Language.KR)
+                .paragraphMax(1)
                 .storyContent(List.of(StoryContent.builder()
                         .content("한국어 내용입니다.")
+                                .paragraphNum(1)
                         .build()))
                 .storyTitle("제목입니다.")
                 .build();
@@ -61,10 +63,11 @@ class StoryServiceTest {
                 .thenReturn(Optional.of(mockStory));
 
         // 실행
-        StoryDto.StoryResponseDto responseDto = storyService.getStory(requestDto);
+        // 실행
+        List<StoryDto.StoryResponseDto> responseDto = storyService.getStory(requestDto);
 
         // 검증
-        assertEquals("한국어 내용입니다.", responseDto.getStoryContents().get(0));
+        assertEquals("한국어 내용입니다.", responseDto.get(0).getStoryContents().get(0));
     }
 
     @Test
@@ -78,11 +81,14 @@ class StoryServiceTest {
         Story mockStory = Story.builder()
                 .characters(Characters.NONE)
                 .language(Language.KR)
+                .paragraphMax(1)
                 .storyContent(List.of(StoryContent.builder()
                         .content("한국어 내용입니다.")
+                        .paragraphNum(1)
                         .build()))
                 .storyImages(List.of(StoryImage.builder()
                         .filename("손오공.png")
+                        .paragraphNum(1)
                         .build()))
                 .storyTitle("제목입니다.")
                 .build();
@@ -91,11 +97,12 @@ class StoryServiceTest {
                 .thenReturn(Optional.of(mockStory));
 
         // 실행
-        StoryDto.StoryResponseDto responseDto = storyService.getStory(requestDto);
+        List<StoryDto.StoryResponseDto> responseDto = storyService.getStory(requestDto);
+
 
         // 검증
-        assertEquals("한국어 내용입니다.", responseDto.getStoryContents().get(0));
-        assertEquals(fileDir + "/손오공.png", responseDto.getStoryImagesUrl().get(0));
+        assertEquals("한국어 내용입니다.", responseDto.get(0).getStoryContents().get(0));
+        assertEquals( "/front/images/손오공.png", responseDto.get(0).getStoryImagesUrl().get(0));
     }
 
     @Test
@@ -111,8 +118,10 @@ class StoryServiceTest {
                 .characters(Characters.NONE)
                 .language(Language.CN)
                 .id(1L)
+                .paragraphMax(1)
                 .storyContent(List.of(StoryContent.builder()
                         .content("中文内容")
+                        .paragraphNum(1)
                         .build()))
                 .storyTitle("中文题目")
                 .build();
@@ -121,10 +130,10 @@ class StoryServiceTest {
                 .thenReturn(Optional.of(mockStory));
 
         // 실행
-        StoryDto.StoryResponseDto responseDto = storyService.getStory(requestDto);
+        List<StoryDto.StoryResponseDto> responseDto = storyService.getStory(requestDto);
 
         // 검증
-        assertEquals("中文内容", responseDto.getStoryContents().get(0));
+        assertEquals("中文内容", responseDto.get(0).getStoryContents().get(0));
     }
 
     @Test
@@ -140,11 +149,14 @@ class StoryServiceTest {
                 .characters(Characters.NONE)
                 .language(Language.CN)
                 .id(1L)
+                .paragraphMax(1)
                 .storyContent(List.of(StoryContent.builder()
                         .content("中文内容")
+                        .paragraphNum(1)
                         .build()))
                 .storyImages(List.of(StoryImage.builder()
                         .filename("손오공.png")
+                        .paragraphNum(1)
                         .build()))
                 .storyTitle("中文题目")
                 .build();
@@ -153,11 +165,11 @@ class StoryServiceTest {
                 .thenReturn(Optional.of(mockStory));
 
         // 실행
-        StoryDto.StoryResponseDto responseDto = storyService.getStory(requestDto);
+        List<StoryDto.StoryResponseDto> responseDto = storyService.getStory(requestDto);
 
         // 검증
-        assertEquals("中文内容", responseDto.getStoryContents().get(0));
-        assertEquals(fileDir + "/손오공.png", responseDto.getStoryImagesUrl().get(0));
+        assertEquals("中文内容", responseDto.get(0).getStoryContents().get(0));
+        assertEquals( "/front/images/손오공.png", responseDto.get(0).getStoryImagesUrl().get(0));
     }
 
     @Test

@@ -6,19 +6,9 @@ body {
   font-weight: 400;
   font-style: normal;
   background-image: url(images/back3.webp);
-
-  /*여기가 수정 한 부분*/
-  background-size: cover; /* 화면에 이미지가 완전히 들어맞도록 설정 */
-  background-position: center; /* 이미지가 화면 중앙에 오도록 설정 */
-  background-repeat: no-repeat; /* 이미지 반복 없음 */
-  height: 100%; /* 뷰포트 높이에 맞춤 */
-  width: 100%;
-
-
- /* background-position: -60px 0;
+  background-position: -60px 0;
   color: #000;
   position: relative;
-  overflow: hidden;*/
 }
 a {
   color: #000;
@@ -132,8 +122,8 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%;
-  width: 100%;
+  height: 730px;
+  width: 1660px;
 }
 .character_select {
   width: 700px;
